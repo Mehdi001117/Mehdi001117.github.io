@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <titleتولدت مبارک موسی! ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e, #ffaaaa);
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            padding: 50px;
+            color: white;
+        }
+
+        h1 {
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: bounce 2s infinite;
+        }
+
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            color: #ff2768;
+            animation: float 6s infinite linear;
+            font-size: 24px;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0); }
+            100% { transform: translateY(-100vh) scale(1.5); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .message {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 30px auto;
+            max-width: 600px;
+            backdrop-filter: blur(5px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 تولدت مبارک موسی عزیز! 🎂</h1>
+        
+        <div class="message">
+            <h2>❤️ بهترین آرزوها برات دارم! ❤️</h2>
+            <p>امیدوارم سال جدید پر از موفقیت، شادی و خوشبختی برات باشه!</p>
+        </div>
+
+        <audio id="music" autoplay loop>
+            <source src="https://assets.mixkit.co/music/preview/mixkit-happy-birthday-291.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div class="hearts" id="hearts"></div>
+
+    <script>
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            for(let i = 0; i < 50; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 6 + 's';
+                heartsContainer.appendChild(heart);
+            }
+        }
+
+        // Start animations
+        window.onload = function() {
+            createHearts();
+            document.getElementById('music').play().catch(() => {
+                // Autoplay blocked handling
+                alert('لطفا برای پخش موسیقی یک کلیک کنید!');
+            });
+        }
+
+        // Enable audio on click
+        document.body.addEventListener('click', () => {
+            document.getElementById('music').play();
+        });
+    </script>
+</body>
+</html>
